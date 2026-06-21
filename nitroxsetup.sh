@@ -10,6 +10,7 @@ nitrox_download_folder_name="Nitrox_GitHub_Download"
 nitrox_install_path="$HOME/.Nitrox/" 
 nitrox_temp_install_path="/tmp/Nitrox Setup Files $(date +%s)/"
 nitrox_desktop_file="$HOME/Desktop/NitroxLauncher.desktop"
+nitrox_latest_version=$(curl -fsSL "https://api.github.com/repos/SubnauticaNitrox/Nitrox/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
 
 # Functions
 prompt_confirm() {
@@ -128,7 +129,7 @@ nitrox_zip_file_path="${nitrox_temp_install_path}${nitrox_zip_file_name}"
 
 
 # Program
-echo "----------------Nitrox-Setup-Script-1.8.1.0-----------------"
+echo "----------------Nitrox-Setup-Script-$nitrox_latest_version-----------------"
 mkdir "${nitrox_temp_install_path}"
 dotnet_install
 nitrox_install
